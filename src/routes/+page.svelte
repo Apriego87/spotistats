@@ -2,7 +2,7 @@
 	import { Button } from '$lib/components/ui/button'
 	import spotify from '$lib/spotify.svg'
 
-	const clientId = 'a8424c358de44bfc9a1a344985cc703a'
+	const clientId = ''
 	const redirectUri = 'http://localhost:5173/callback'
 	const state = 'some-random-state' // A random state string for CSRF protection
 	const scopes = 'user-read-private user-read-email user-top-read user-read-currently-playing user-read-recently-played'
