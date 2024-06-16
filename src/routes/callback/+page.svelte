@@ -11,7 +11,7 @@
 			localStorage.setItem('access_token', data.access_token)
 			localStorage.setItem('refresh_token', data.refresh_token)
 			localStorage.setItem('expires_in', data.expires_in)
-			localStorage.setItem('expires', data.expiry)
+			localStorage.setItem('expires', data.expires)
 		}
 
 		goto('/profile')

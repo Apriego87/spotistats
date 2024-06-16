@@ -6,6 +6,7 @@
 	import GenresComponent from '../../components/GenresComponent.svelte'
 	import * as Select from '$lib/components/ui/select'
 	import { onMount, onDestroy } from 'svelte'
+	import { goto } from '$app/navigation'
 
 	let datos: any = null
 	let profileInfo: any[] = []
@@ -18,6 +19,17 @@
 	let limit: number = 20
 
 	let intervalId: number
+
+	if (browser) {
+		const expires = localStorage.getItem('expires')
+
+		if (expires) {
+			if (new Date(expires) <= new Date()) {
+				goto(`/refreshToken?refresh_token=${localStorage.getItem('refresh_token')}`)
+			}
+			console.log('expirado')
+		}
+	}
 
 	async function getProfileInfo() {
 		let accessToken = localStorage.getItem('access_token')
@@ -172,6 +184,7 @@
 <div
 	class="flex flex-col items-center justify-between gap-4 bg-gradient-to-b from-green-700 from-10% via-green-900 via-20% to-black p-5 text-secondary"
 >
+	<!-- <a href="/refreshToken?refresh_token={localStorage.getItem('refresh_token')}">Refrescar token</a> -->
 	{#if datos}
 		<ProfileComponent {profileInfo} {currentlyPlayingContent} />
 		<div class="sticky top-0 isolate z-10 flex w-full flex-row justify-end gap-4">
