@@ -3,7 +3,6 @@
 	import { browser } from '$app/environment'
 	import { goto } from '$app/navigation'
 	export let data: PageData
-	console.log(data)
 
 	if (browser) {
 		const accessToken = localStorage.getItem('access_token')

@@ -1,7 +1,9 @@
+import { env } from "$env/dynamic/private";
+
 export async function fetchToken(code) {
-    const clientId = 'a8424c358de44bfc9a1a344985cc703a';
-    const clientSecret = '1c1b318e39ae444d906f01d7c2e36f41';
-    const redirectUri = 'http://localhost:5173/callback';
+    const clientId = env.client_id;
+    const clientSecret = env.client_secret;
+    const redirectUri = env.redirect_uri;
 
     const response = await fetch('https://accounts.spotify.com/api/token', {
         method: 'POST',
