@@ -5,7 +5,7 @@
 	export let data
 
 	const clientId = data.clientID
-	const redirectUri = 'http://localhost:5173/callback'
+	const redirectUri = data.redirectURI
 	const state = 'some-random-state' // A random state string for CSRF protection
 	const scopes =
 		'user-read-private user-read-email user-top-read user-read-currently-playing user-read-recently-played'
