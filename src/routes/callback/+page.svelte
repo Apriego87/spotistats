@@ -5,15 +5,19 @@
 	export let data: PageData
 
 	if (browser) {
-		localStorage.setItem('access_token', data.access_token)
-		localStorage.setItem('refresh_token', data.refresh_token)
-		localStorage.setItem('expires_in', data.expires_in)
-		localStorage.setItem('expires', data.expiry)
+		const accessToken = localStorage.getItem('access_token')
+
+		if (!accessToken) {
+			localStorage.setItem('access_token', data.access_token)
+			localStorage.setItem('refresh_token', data.refresh_token)
+			localStorage.setItem('expires_in', data.expires_in)
+			localStorage.setItem('expires', data.expiry)
+		}
 
 		goto('/profile')
 	}
 </script>
 
-<main class="h-screen w-full flex flex-col items-center justify-center text-white">
+<main class="flex h-screen w-full flex-col items-center justify-center text-white">
 	<h1>Authenticating...</h1>
 </main>

@@ -61,7 +61,7 @@
 							target="_blank"
 							class="flex w-full flex-row items-center gap-4 p-2"
 						>
-						<p>{index + 1}</p>
+							<p>{index + 1}</p>
 							<img
 								class="size-12 rounded-full object-cover"
 								src={song.track.album.images[0].url}
@@ -69,6 +69,7 @@
 							/>
 							<div>
 								<p class="font-bold">{song.track.name}</p>
+
 								<div class="flex flex-row flex-wrap">
 									{#each song.track.artists as artist, index}
 										<p class="text-sm">
@@ -76,6 +77,9 @@
 										</p>
 									{/each}
 								</div>
+								<p class="text-xs">
+									{`${new Date(song.played_at).getUTCDate()}/${new Date(song.played_at).getUTCMonth() + 1}, ${new Date(song.played_at).getUTCHours()}:${new Date(song.played_at).getUTCMinutes()}`}
+								</p>
 							</div>
 						</a>
 					</div>

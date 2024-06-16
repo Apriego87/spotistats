@@ -29,15 +29,15 @@
 					</div>
 				</div>
 				{#if currentlyPlayingContent}
-					<div class="w-full text-center lg:w-auto md:min-w-1/4 lg:min-w-[25vw]">
-						<Card.Root class="border bg-transparent text-white w-full">
+					<div class="whitespace-nowrap w-full text-center lg:w-auto lg:min-w-[20vw]">
+						<Card.Root class="w-full border bg-transparent text-white">
 							<Card.Header>
 								<Card.Title>
 									<p class="text-xl">Escuchando ahora:</p>
 								</Card.Title>
 							</Card.Header>
 							<Card.Content>
-								<div class="flex flex-col items-center gap-4 md:flex-row lg:flex-row w-full">
+								<div class="flex w-full flex-row items-center gap-4">
 									{#if currentlyPlayingContent.currently_playing_type === 'episode'}
 										<div class="flex flex-row items-center gap-4">
 											<Avatar.Root class="animation-duration-10 size-mx animate-spin-slow">
@@ -52,15 +52,17 @@
 											</div>
 										</div>
 									{:else}
-										<Avatar.Root class="animation-duration-10 size-mx animate-spin-slow">
+										<Avatar.Root class="animation-duration-10 size-mx animate-spin-slow size-12 lg:size-20">
 											<Avatar.Image src={currentlyPlayingContent.item.album.images[0].url} alt="" />
 											<Avatar.Fallback></Avatar.Fallback>
 										</Avatar.Root>
-										<div class="flex w-full flex-col items-start">
-											<p class="text-lg lg:text-xl whitespace-nowrap">{currentlyPlayingContent.item.name}</p>
-											<div class="text-sm lg:text-md flex flex-row flex-wrap">
+										<div class="flex flex-col items-start">
+											<p class="text-lg font-bold lg:text-xl">
+												{currentlyPlayingContent.item.name}
+											</p>
+											<div class="flex flex-row flex-wrap">
 												{#each currentlyPlayingContent.item.artists as artist, index}
-													<p>
+													<p class="lg:text-md text-sm">
 														{artist.name}{index !== currentlyPlayingContent.item.artists.length - 1
 															? ','
 															: ''}
