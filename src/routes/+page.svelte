@@ -13,7 +13,7 @@
 	const url = `https://accounts.spotify.com/authorize?response_type=code&client_id=${clientId}&scope=${encodeURIComponent(scopes)}&redirect_uri=${encodeURIComponent(redirectUri)}`
 
 	function login() {
-		console.log(url)
+		alert(url)
 		window.location.href = url
 	}
 </script>

@@ -12,7 +12,7 @@
 			localStorage.setItem('refresh_token', data.refresh_token)
 			localStorage.setItem('expires_in', data.expires_in)
 			localStorage.setItem('expires', data.expiry)
-			console.log(localStorage.getItem('access_token'))
+			alert(localStorage.getItem('access_token'))
 		}
 
 		goto('/profile')
