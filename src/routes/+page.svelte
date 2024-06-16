@@ -2,10 +2,13 @@
 	import { Button } from '$lib/components/ui/button'
 	import spotify from '$lib/spotify.svg'
 
-	const clientId = ''
+	export let data
+
+	const clientId = data.clientID
 	const redirectUri = 'http://localhost:5173/callback'
 	const state = 'some-random-state' // A random state string for CSRF protection
-	const scopes = 'user-read-private user-read-email user-top-read user-read-currently-playing user-read-recently-played'
+	const scopes =
+		'user-read-private user-read-email user-top-read user-read-currently-playing user-read-recently-played'
 
 	const url = `https://accounts.spotify.com/authorize?response_type=code&client_id=${clientId}&scope=${encodeURIComponent(scopes)}&redirect_uri=${encodeURIComponent(redirectUri)}`
 
