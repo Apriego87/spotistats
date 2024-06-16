@@ -3,6 +3,7 @@
 	import { browser } from '$app/environment'
 	import { goto } from '$app/navigation'
 	export let data: PageData
+	console.log(data)
 
 	if (browser) {
 		const accessToken = localStorage.getItem('access_token')
@@ -12,7 +13,6 @@
 			localStorage.setItem('refresh_token', data.refresh_token)
 			localStorage.setItem('expires_in', data.expires_in)
 			localStorage.setItem('expires', data.expiry)
-			console.log(data)
 		}
 
 		goto('/profile')
