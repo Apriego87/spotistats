@@ -29,7 +29,7 @@
 					</div>
 				</div>
 				{#if currentlyPlayingContent}
-					<div class="whitespace-nowrap w-full text-center lg:w-auto lg:min-w-[20vw]">
+					<div class="w-full text-center lg:w-auto lg:min-w-[20vw]">
 						<Card.Root class="w-full border bg-transparent text-white">
 							<Card.Header>
 								<Card.Title>
