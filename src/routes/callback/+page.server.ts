@@ -20,4 +20,7 @@ export const load: PageServerLoad = async ({ url }) => {
             message: 'no detecta el code'
         }
     }
+    return {
+        code
+    }
 }
