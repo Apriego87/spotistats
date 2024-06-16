@@ -6,7 +6,6 @@ export const load: PageServerLoad = async ({ url }) => {
 
     if (code) {
         const tokenResponse = await fetchToken(code)
-        console.log(tokenResponse)
         if (tokenResponse.access_token) {
 
             const now = new Date()

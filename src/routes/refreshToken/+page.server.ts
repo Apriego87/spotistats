@@ -5,8 +5,6 @@ import { env } from "$env/dynamic/private";
 export const load: PageServerLoad = async ({ url }) => {
     var refresh_token = url.searchParams.get('refresh_token');
 
-    console.log(refresh_token)
-
     const authString = btoa(`${env.client_id}:${env.client_secret}`);
     const params = new URLSearchParams();
 

@@ -10,6 +10,4 @@
 
 		goto('/profile')
 	}
-
-	console.log(data)
 </script>

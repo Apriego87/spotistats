@@ -27,7 +27,6 @@
 			if (new Date(expires) <= new Date()) {
 				goto(`/refreshToken?refresh_token=${localStorage.getItem('refresh_token')}`)
 			}
-			console.log('expirado')
 		}
 		else {
 			goto('/')
@@ -56,7 +55,6 @@
 			}
 		)
 		const data = await response.json()
-		console.log(data)
 		return data
 	}
 
