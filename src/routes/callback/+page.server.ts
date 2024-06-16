@@ -3,6 +3,7 @@ import type { PageServerLoad } from './$types'
 
 export const load: PageServerLoad = async ({ url }) => {
     const code = url.searchParams.get('code')
+    console.log(code)
 
     if (code) {
         const tokenResponse = await fetchToken(code)
@@ -15,6 +16,8 @@ export const load: PageServerLoad = async ({ url }) => {
             }
         }
     } else {
-        // Handle error
+        return {
+            message: 'no detecta el code'
+        }
     }
 }
