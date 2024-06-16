@@ -16,10 +16,10 @@
 			<div class="mt-2 flex w-full flex-col items-center gap-4 md:flex-row lg:flex-row">
 				<div class="flex w-full flex-row">
 					<div class="flex w-1/3 flex-col items-center justify-center">
-						<Avatar.Root class="size-24 border-2 md:size-24 lg:size-36">
+						<!-- <Avatar.Root class="size-24 border-2 md:size-24 lg:size-36">
 							<Avatar.Image src={profileInfo.images[1].url} alt="" />
-							<Avatar.Fallback></Avatar.Fallback>
-						</Avatar.Root>
+							<Avatar.Fallback>U</Avatar.Fallback>
+						</Avatar.Root> -->
 					</div>
 					<div
 						class="flex w-2/3 flex-col justify-center text-center md:text-left lg:w-2/4 lg:text-left"
