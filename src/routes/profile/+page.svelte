@@ -29,6 +29,9 @@
 			}
 			console.log('expirado')
 		}
+		else {
+			goto('/')
+		}
 	}
 
 	async function getProfileInfo() {
