@@ -198,7 +198,7 @@
 				</Select.Root>
 			</div>
 		</div>
-		<ArtistsComponent {artists} />
+		<!-- <ArtistsComponent {artists} /> -->
 		<GenresComponent {genres} />
 		<SongsComponent {songs} {recentlyPlayedSongs} />
 	{:else}

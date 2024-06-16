@@ -16,6 +16,7 @@
 	<Card.Content class="h-fit w-full">
 		<div class="no-scrollbar flex h-full flex-row gap-8 overflow-auto lg:gap-16">
 			{#each artists as artist}
+			{console.log(artist)}
 				<div class="grid h-full gap-2 text-center">
 					<a href={artist.external_urls.spotify} target="_blank">
 						<Avatar.Root class="size-24 border-2 lg:size-36">
