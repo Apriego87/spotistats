@@ -3,6 +3,8 @@
 	import * as Card from '$lib/components/ui/card'
 
 	export let profileInfo, currentlyPlayingContent
+
+	console.log(profileInfo)
 </script>
 
 <Card.Root
@@ -16,9 +18,15 @@
 			<div class="mt-2 flex w-full flex-col items-center gap-4 md:flex-row lg:flex-row">
 				<div class="flex w-full flex-row">
 					<div class="flex w-1/3 flex-col items-center justify-center">
-						{#if profileInfo.images[1].url}
-							<Avatar.Root class="size-24 border-2 md:size-24 lg:size-36">
-								<Avatar.Image src={profileInfo.images[1].url} alt="" />
+						{#if profileInfo.images[0].url}
+							<Avatar.Root
+								class="size-24 overflow-hidden rounded-full border-2 md:size-24 lg:size-36"
+							>
+								<Avatar.Image
+									src={profileInfo.images[0].url}
+									alt=""
+									class="h-full w-full object-cover"
+								/>
 								<Avatar.Fallback>U</Avatar.Fallback>
 							</Avatar.Root>
 						{/if}
@@ -35,22 +43,26 @@
 						<Card.Root class="w-full border bg-transparent text-white">
 							<Card.Header>
 								<Card.Title>
-									<p class="text-xl text-center">Escuchando ahora:</p>
+									<p class="text-center text-xl">Escuchando ahora:</p>
 								</Card.Title>
 							</Card.Header>
 							<Card.Content>
 								<div class="flex w-full flex-row items-center gap-4">
 									{#if currentlyPlayingContent.currently_playing_type === 'episode'}
-									<Avatar.Root class="animation-duration-10 size-mx size-12 animate-spin-slow lg:size-20">
-										<Avatar.Image src={currentlyPlayingContent.item.images[0].url} alt="" />
-										<Avatar.Fallback></Avatar.Fallback>
-									</Avatar.Root>
-									<div class="flex flex-col items-start">
-										<p class="text-lg font-bold lg:text-xl">{currentlyPlayingContent.item.name}</p>
-										<p class="text-sm">
-											{currentlyPlayingContent.item.show.name}
-										</p>
-									</div>
+										<Avatar.Root
+											class="animation-duration-10 size-mx size-12 animate-spin-slow lg:size-20"
+										>
+											<Avatar.Image src={currentlyPlayingContent.item.images[0].url} alt="" />
+											<Avatar.Fallback></Avatar.Fallback>
+										</Avatar.Root>
+										<div class="flex flex-col items-start">
+											<p class="text-lg font-bold lg:text-xl">
+												{currentlyPlayingContent.item.name}
+											</p>
+											<p class="text-sm">
+												{currentlyPlayingContent.item.show.name}
+											</p>
+										</div>
 									{:else}
 										<Avatar.Root
 											class="animation-duration-10 size-mx size-12 animate-spin-slow lg:size-20"
