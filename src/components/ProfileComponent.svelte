@@ -31,28 +31,26 @@
 					</div>
 				</div>
 				{#if currentlyPlayingContent}
-					<div class="w-full text-center lg:w-auto lg:min-w-[20vw]">
+					<div class="w-full lg:w-auto lg:min-w-[30vw]">
 						<Card.Root class="w-full border bg-transparent text-white">
 							<Card.Header>
 								<Card.Title>
-									<p class="text-xl">Escuchando ahora:</p>
+									<p class="text-xl text-center">Escuchando ahora:</p>
 								</Card.Title>
 							</Card.Header>
 							<Card.Content>
 								<div class="flex w-full flex-row items-center gap-4">
 									{#if currentlyPlayingContent.currently_playing_type === 'episode'}
-										<div class="flex flex-row items-center gap-4">
-											<Avatar.Root class="animation-duration-10 size-mx animate-spin-slow">
-												<Avatar.Image src={currentlyPlayingContent.item.images[0].url} alt="" />
-												<Avatar.Fallback></Avatar.Fallback>
-											</Avatar.Root>
-											<div class="flex w-full flex-col">
-												<p class="lg:whitespace-nowrap">{currentlyPlayingContent.item.name}</p>
-												<p class="text-sm">
-													{currentlyPlayingContent.item.show.name}
-												</p>
-											</div>
-										</div>
+									<Avatar.Root class="animation-duration-10 size-mx size-12 animate-spin-slow lg:size-20">
+										<Avatar.Image src={currentlyPlayingContent.item.images[0].url} alt="" />
+										<Avatar.Fallback></Avatar.Fallback>
+									</Avatar.Root>
+									<div class="flex flex-col items-start">
+										<p class="text-lg font-bold lg:text-xl">{currentlyPlayingContent.item.name}</p>
+										<p class="text-sm">
+											{currentlyPlayingContent.item.show.name}
+										</p>
+									</div>
 									{:else}
 										<Avatar.Root
 											class="animation-duration-10 size-mx size-12 animate-spin-slow lg:size-20"
