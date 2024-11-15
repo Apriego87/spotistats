@@ -20,7 +20,7 @@
 				<Popover.Root>
 					<Popover.Trigger>
 						<Badge
-							class="bg-white/20 p-1 text-sm text-white shadow-lg ring-1 ring-black/5 backdrop-blur"
+							class="bg-white/20 p-1 text-sm text-white shadow-lg ring-1 ring-black/5"
 							>{genre.genre}</Badge
 						>
 					</Popover.Trigger>
