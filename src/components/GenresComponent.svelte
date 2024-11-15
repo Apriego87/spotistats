@@ -7,7 +7,7 @@
 </script>
 
 <Card.Root
-	class="max-w-screen isolate w-full max-h-[33vh] overflow-auto no-scrollbar rounded-xl border bg-white/20 text-white shadow-lg ring-1 ring-black/5 backdrop-blur"
+	class="max-w-screen isolate w-full max-h-[33vh] overflow-auto no-scrollbar rounded-xl border bg-white/20 text-white shadow-lg ring-1 ring-black/5 "
 >
 	<Card.Header>
 		<Card.Title>

@@ -2,7 +2,7 @@
 	import '../app.css';
 </script>
 
-<!-- <div class="h-[10vh] bg-gray-800/80 backdrop-blur">
+<!-- <div class="h-[10vh] bg-gray-800/80 ">
 	<p>Header</p>
 </div> -->
 

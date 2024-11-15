@@ -27,7 +27,7 @@
 </script>
 
 <Card.Root
-	class="max-w-screen isolate flex h-[50vh] w-full flex-col overflow-hidden rounded-xl border bg-white/20 text-white shadow-lg ring-1 ring-black/5 backdrop-blur"
+	class="max-w-screen isolate flex h-[50vh] w-full flex-col overflow-hidden rounded-xl border bg-white/20 text-white shadow-lg ring-1 ring-black/5 "
 >
 	<Card.Header class="flex-shrink-0">
 		<Card.Title>
@@ -47,7 +47,7 @@
 	</Card.Header>
 	<Card.Content class="no-scrollbar flex-grow overflow-auto">
 		<Tabs.Root value="top" class="w-full">
-			<Tabs.List class="bg-white/20 text-white shadow-lg ring-1 ring-black/5 backdrop-blur">
+			<Tabs.List class="bg-white/20 text-white shadow-lg ring-1 ring-black/5 ">
 				<Tabs.Trigger value="top">Top</Tabs.Trigger>
 				<Tabs.Trigger value="recent">Recientes</Tabs.Trigger>
 			</Tabs.List>

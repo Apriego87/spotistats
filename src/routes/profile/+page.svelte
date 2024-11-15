@@ -190,7 +190,7 @@
 		<ProfileComponent {profileInfo} {currentlyPlayingContent} />
 		<div class="sticky top-0 isolate z-10 flex w-full flex-row justify-end gap-4">
 			<div
-				class="flex w-full flex-row gap-4 rounded-xl border bg-white/20 p-5 text-white shadow-lg ring-1 ring-black/5 backdrop-blur lg:w-auto lg:min-w-[33vw]"
+				class="flex w-full flex-row gap-4 rounded-xl border bg-white/20 p-5 text-white shadow-lg ring-1 ring-black/5  lg:w-auto lg:min-w-[33vw]"
 			>
 				<Select.Root onSelectedChange={handleTimeRangeChange}>
 					<Select.Trigger class="min-w-1/2 w-1/2">

@@ -3,12 +3,10 @@
 	import * as Card from '$lib/components/ui/card'
 
 	export let profileInfo, currentlyPlayingContent
-
-	console.log(profileInfo)
 </script>
 
 <Card.Root
-	class="max-w-screen isolate w-full rounded-xl bg-white/20 text-white shadow-lg ring-1 ring-black/5 backdrop-blur sm:h-1/3 md:h-1/3 lg:h-auto"
+	class="max-w-screen isolate w-full rounded-xl bg-white/20 text-white shadow-lg ring-1 ring-black/5  sm:h-1/3 md:h-1/3 lg:h-auto"
 >
 	<Card.Header>
 		<Card.Title>
@@ -51,6 +49,7 @@
 									{#if currentlyPlayingContent.currently_playing_type === 'episode'}
 										<Avatar.Root
 											class="animation-duration-10 size-mx size-12 animate-spin-slow lg:size-20"
+											
 										>
 											<Avatar.Image src={currentlyPlayingContent.item.images[0].url} alt="" />
 											<Avatar.Fallback></Avatar.Fallback>

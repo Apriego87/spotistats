@@ -21,7 +21,7 @@
 	class="flex h-screen flex-col items-center justify-center gap-4 bg-gradient-to-b from-green-700 from-10% via-green-900 via-20% to-black p-5 text-secondary"
 >
 	<div
-		class="flex h-1/4 w-full flex-col items-center justify-center gap-4 rounded-xl bg-white/20 text-white shadow-lg ring-1 ring-black/5 backdrop-blur md:w-1/4"
+		class="flex h-1/4 w-full flex-col items-center justify-center gap-4 rounded-xl bg-white/20 text-white shadow-lg ring-1 ring-black/5  md:w-1/4"
 	>
 		<div>
 			<h1 class="text-center text-4xl text-white">
