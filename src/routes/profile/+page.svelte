@@ -21,6 +21,8 @@
 	let timeRange: string = 'medium_term'
 	let limit: number = 20
 
+	import { CaretUp } from 'svelte-radix'
+
 	let intervalId: number
 
 	if (browser) {
@@ -196,9 +198,9 @@
 					<Drawer.Trigger class="fixed bottom-6 right-6 z-50">
 						<Button
 							variant="secondary"
-							class="flex h-10 w-10 items-center justify-center rounded-full shadow-lg"
+							class="flex h-10 w-10 items-center justify-center rounded-full shadow-lg p-0"
 						>
-							^
+							<CaretUp></CaretUp>
 						</Button>
 					</Drawer.Trigger>
 					<Drawer.Content>
@@ -240,9 +242,9 @@
 					<Popover.Trigger class="fixed bottom-6 right-6 z-50">
 						<Button
 							variant="secondary"
-							class="flex h-10 w-10 items-center justify-center rounded-full shadow-lg"
+							class="flex h-10 w-10 items-center justify-center rounded-full shadow-lg p-0"
 						>
-							^
+						<CaretUp></CaretUp>
 						</Button>
 					</Popover.Trigger>
 
