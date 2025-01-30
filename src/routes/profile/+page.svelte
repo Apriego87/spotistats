@@ -14,7 +14,7 @@
 	let songs: any[] = []
 	let genres: any[] = []
 	let currentlyPlayingContent: any[] = []
-	let recentlyPlayedSongs: any[] = []
+	let recently_played: any[] = []
 	let timeRange: string = 'medium_term'
 	let limit: number = 20
 
@@ -142,7 +142,7 @@
 					genres = new Set(topArtists.genres)
 					songs = topSongs.items
 					currentlyPlayingContent = currentlyPlaying
-					recentlyPlayedSongs = recentlyPlayed
+					recently_played = recentlyPlayed
 				} catch (error) {
 					console.error('Error fetching data:', error)
 				}
@@ -217,7 +217,7 @@
 		</div>
 		<ArtistsComponent {artists} />
 		<GenresComponent {genres} />
-		<SongsComponent {songs} {recentlyPlayedSongs} />
+		<SongsComponent {songs} recently_played={recently_played} />
 	{:else}
 		<div class="flex h-screen flex-col items-center justify-center">
 			<p>Cargando...</p>

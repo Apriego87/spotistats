@@ -15,7 +15,7 @@ const config: Config = {
 		},
 		extend: {
 			animation: {
-				'spin-slow': 'spin 3s linear infinite',
+				'spin-slow': 'spin 4s linear infinite',
 			},
 			colors: {
 				border: "hsl(var(--border) / <alpha-value>)",

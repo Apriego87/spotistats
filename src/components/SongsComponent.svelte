@@ -3,24 +3,27 @@
 	import * as Card from '$lib/components/ui/card'
 	import * as Tabs from '$lib/components/ui/tabs'
 
-	export let songs, recentlyPlayedSongs
+	export let songs, recently_played
 
-	let searchTerm = ''
+	console.log(songs)
+
+	let search_term = ''
+	$: indexed_songs = songs.map((song, index) => ({ ...song, original_index: index + 1 }))
 
 	// Function to normalize string by removing special characters
-	function normalizeString(str: string) {
+	function normalize_string(str: string) {
 		return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
 	}
 
 	// Filtered songs based on search term
-	$: filteredSongs = songs.filter((song) => {
-		const normalizedSearch = normalizeString(searchTerm.toLowerCase())
+	$: filtered_songs = indexed_songs.filter((song) => {
+		const normalized_search = normalize_string(search_term.toLowerCase())
 
 		// Check if the search term matches song name or any artist's name
 		return (
-			normalizeString(song.name.toLowerCase()).includes(normalizedSearch) ||
+			normalize_string(song.name.toLowerCase()).includes(normalized_search) ||
 			song.artists.some((artist) =>
-				normalizeString(artist.name.toLowerCase()).includes(normalizedSearch)
+				normalize_string(artist.name.toLowerCase()).includes(normalized_search)
 			)
 		)
 	})
@@ -37,7 +40,7 @@
 				<div class="w-full md:w-4/5">
 					<input
 						type="text"
-						bind:value={searchTerm}
+						bind:value={search_term}
 						placeholder="Busca por canción o artista..."
 						class="w-full rounded border-white bg-white/20 p-2 text-white shadow-lg ring-1"
 					/>
@@ -53,14 +56,14 @@
 			</Tabs.List>
 			<Tabs.Content value="top">
 				<div class="no-scrollbar">
-					{#each filteredSongs as song, index}
+					{#each filtered_songs as song}
 						<div class="w-fit">
 							<a
 								href={song.external_urls.spotify}
 								target="_blank"
 								class="flex w-full flex-row items-center gap-4 p-2"
 							>
-								<p class="font-bold">{index + 1}</p>
+								<p class="font-bold">{song.original_index}</p>
 								<img
 									class="size-12 rounded-full object-cover"
 									src={song.album.images[0].url}
@@ -78,14 +81,14 @@
 								</div>
 							</a>
 						</div>
-						{#if index < filteredSongs.length - 1}
+						{#if song.original_index < songs.length}
 							<Separator class="my-2" />
 						{/if}
 					{/each}
 				</div>
 			</Tabs.Content>
 			<Tabs.Content value="recent">
-				{#each recentlyPlayedSongs.items as song, index}
+				{#each recently_played.items as song, index}
 					<div class="w-fit">
 						<a
 							href={song.track.external_urls.spotify}
