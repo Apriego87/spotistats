@@ -5,6 +5,7 @@
 	import ProfileComponent from '../../components/ProfileComponent.svelte'
 	import GenresComponent from '../../components/GenresComponent.svelte'
 	import * as Select from '$lib/components/ui/select'
+	import * as Drawer from '$lib/components/ui/drawer'
 	import * as Popover from '$lib/components/ui/popover'
 	import { Button } from '$lib/components/ui/button'
 	import { onMount, onDestroy } from 'svelte'
@@ -190,38 +191,92 @@
 	{#if datos}
 		<ProfileComponent {profileInfo} {currentlyPlayingContent} />
 		<div class="sticky top-0 isolate z-10 flex w-full flex-row justify-end gap-4">
-			<Popover.Root>
-				<Popover.Trigger class="-mr-5">
-					<Button variant="secondary" class="rounded-full">&lt;</Button>
-				</Popover.Trigger>
-				<Popover.Content class="flex w-auto flex-row border-transparent p-0 rounded-xl bg-white/20 text-white">
-					<div
-						class="flex w-full flex-row gap-4 rounded-xl border bg-white p-5 text-black shadow-lg ring-1 ring-black/5 lg:w-auto lg:min-w-[33vw]"
-					>
-						<Select.Root onSelectedChange={handleTimeRangeChange}>
-							<Select.Trigger class="min-w-1/2 w-1/2">
-								<Select.Value placeholder="Tiempo" />
-							</Select.Trigger>
-							<Select.Content>
-								<Select.Item value="short_term">4 semanas</Select.Item>
-								<Select.Item value="medium_term">6 meses</Select.Item>
-								<Select.Item value="long_term">siempre</Select.Item>
-							</Select.Content>
-						</Select.Root>
+			{#if window.matchMedia('(max-width: 768px)').matches}
+				<Drawer.Root>
+					<Drawer.Trigger class="fixed bottom-6 right-6 z-50">
+						<Button
+							variant="secondary"
+							class="flex h-10 w-10 items-center justify-center rounded-full shadow-lg"
+						>
+							^
+						</Button>
+					</Drawer.Trigger>
+					<Drawer.Content>
+						<Drawer.Header>
+							<Drawer.Title>Filtros</Drawer.Title>
+							<Drawer.Description>
+								<p>
+									Aquí puedes elegir cuántos elementos mostrar, y desde cuándo filtrar los datos.
+								</p>
+							</Drawer.Description>
+						</Drawer.Header>
+						<div class="flex w-full flex-row justify-between gap-4 p-5">
+							<Select.Root onSelectedChange={handleTimeRangeChange}>
+								<Select.Trigger class="min-w-1/2 w-1/2">
+									<Select.Value placeholder="Tiempo" />
+								</Select.Trigger>
+								<Select.Content>
+									<Select.Item value="short_term">4 semanas</Select.Item>
+									<Select.Item value="medium_term">6 meses</Select.Item>
+									<Select.Item value="long_term">siempre</Select.Item>
+								</Select.Content>
+							</Select.Root>
 
-						<Select.Root onSelectedChange={handleLimitChange}>
-							<Select.Trigger class="min-w-1/2 w-1/2">
-								<Select.Value placeholder="Cantidad" />
-							</Select.Trigger>
-							<Select.Content>
-								<Select.Item value="10">10</Select.Item>
-								<Select.Item value="20">20</Select.Item>
-								<Select.Item value="50">50</Select.Item>
-							</Select.Content>
-						</Select.Root>
-					</div>
-				</Popover.Content>
-			</Popover.Root>
+							<Select.Root onSelectedChange={handleLimitChange}>
+								<Select.Trigger class="min-w-1/2 w-1/2">
+									<Select.Value placeholder="Cantidad" />
+								</Select.Trigger>
+								<Select.Content>
+									<Select.Item value="10">10</Select.Item>
+									<Select.Item value="20">20</Select.Item>
+									<Select.Item value="50">50</Select.Item>
+								</Select.Content>
+							</Select.Root>
+						</div>
+					</Drawer.Content>
+				</Drawer.Root>
+			{:else}
+				<Popover.Root>
+					<Popover.Trigger class="fixed bottom-6 right-6 z-50">
+						<Button
+							variant="secondary"
+							class="flex h-10 w-10 items-center justify-center rounded-full shadow-lg"
+						>
+							^
+						</Button>
+					</Popover.Trigger>
+
+					<Popover.Content
+						class="flex w-auto flex-row rounded-xl border-transparent bg-white/20 p-0 text-white"
+					>
+						<div
+							class="flex w-full flex-row gap-4 rounded-xl border bg-white p-5 text-black shadow-lg ring-1 ring-black/5 lg:w-auto lg:min-w-[33vw]"
+						>
+							<Select.Root onSelectedChange={handleTimeRangeChange}>
+								<Select.Trigger class="min-w-1/2 w-1/2">
+									<Select.Value placeholder="Tiempo" />
+								</Select.Trigger>
+								<Select.Content>
+									<Select.Item value="short_term">4 semanas</Select.Item>
+									<Select.Item value="medium_term">6 meses</Select.Item>
+									<Select.Item value="long_term">siempre</Select.Item>
+								</Select.Content>
+							</Select.Root>
+
+							<Select.Root onSelectedChange={handleLimitChange}>
+								<Select.Trigger class="min-w-1/2 w-1/2">
+									<Select.Value placeholder="Cantidad" />
+								</Select.Trigger>
+								<Select.Content>
+									<Select.Item value="10">10</Select.Item>
+									<Select.Item value="20">20</Select.Item>
+									<Select.Item value="50">50</Select.Item>
+								</Select.Content>
+							</Select.Root>
+						</div>
+					</Popover.Content>
+				</Popover.Root>
+			{/if}
 		</div>
 		<ArtistsComponent {artists} />
 		<GenresComponent {genres} />
