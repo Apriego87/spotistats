@@ -7,6 +7,10 @@
 
 	let search_term = ''
 	$: indexed_songs = songs.map((song, index) => ({ ...song, original_index: index + 1 }))
+	$: indexed_recents = recently_played.items.map((song, index) => ({
+		...song,
+		original_index: index + 1
+	}))
 
 	// Function to normalize string by removing special characters
 	function normalize_string(str: string) {
@@ -21,6 +25,17 @@
 		return (
 			normalize_string(song.name.toLowerCase()).includes(normalized_search) ||
 			song.artists.some((artist) =>
+				normalize_string(artist.name.toLowerCase()).includes(normalized_search)
+			)
+		)
+	})
+
+	$: filtered_recents = indexed_recents.filter((song) => {
+		const normalized_search = normalize_string(search_term.toLowerCase())
+
+		return (
+			normalize_string(song.track.name.toLowerCase()).includes(normalized_search) ||
+			song.track.artists.some((artist) =>
 				normalize_string(artist.name.toLowerCase()).includes(normalized_search)
 			)
 		)
@@ -86,14 +101,14 @@
 				</div>
 			</Tabs.Content>
 			<Tabs.Content value="recent">
-				{#each recently_played.items as song, index}
+				{#each filtered_recents as song}
 					<div class="w-fit">
 						<a
 							href={song.track.external_urls.spotify}
 							target="_blank"
 							class="flex w-full flex-row items-center gap-4 p-2"
 						>
-							<p>{index + 1}</p>
+							<p>{song.original_index}</p>
 							<img
 								class="size-12 rounded-full object-cover"
 								src={song.track.album.images[0].url}
@@ -115,7 +130,7 @@
 							</div>
 						</a>
 					</div>
-					{#if index < songs.length - 1}
+					{#if song.original_index < songs.length}
 						<Separator class="my-2" />
 					{/if}
 				{/each}
