@@ -5,8 +5,6 @@
 
 	export let songs, recently_played
 
-	console.log(songs)
-
 	let search_term = ''
 	$: indexed_songs = songs.map((song, index) => ({ ...song, original_index: index + 1 }))
 

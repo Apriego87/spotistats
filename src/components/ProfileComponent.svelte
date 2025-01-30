@@ -49,7 +49,6 @@
 									{#if currentlyPlayingContent.currently_playing_type === 'episode'}
 										<Avatar.Root
 											class="animation-duration-10 size-mx size-12 motion-safe:animate-spin-slow lg:size-20"
-											
 										>
 											<Avatar.Image src={currentlyPlayingContent.item.images[0].url} alt="" />
 											<Avatar.Fallback></Avatar.Fallback>
@@ -64,9 +63,15 @@
 										</div>
 									{:else}
 										<Avatar.Root
-											class="animation-duration-10 size-mx size-12 animate-spin-slow lg:size-20"
+											class="animation-duration-10 size-mx size-12 {currentlyPlayingContent.is_playing
+												? 'animate-spin-slow'
+												: 'grayscale'} lg:size-20"
 										>
-											<Avatar.Image src={currentlyPlayingContent.item.album.images[0].url} alt="" />
+											<Avatar.Image
+												src={currentlyPlayingContent.item.album.images[0].url}
+												alt=""
+											/>
+											
 											<Avatar.Fallback></Avatar.Fallback>
 										</Avatar.Root>
 										<div class="flex flex-col items-start">
