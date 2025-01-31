@@ -128,7 +128,6 @@
 		return data
 	}
 
-
 	async function fetchData() {
 		if (browser) {
 			if (localStorage.getItem('access_token')) {
@@ -185,6 +184,9 @@
 	onDestroy(() => {
 		clearInterval(intervalId)
 	})
+
+	let selected_time = { value: 'medium_term', label: '6 meses' }
+	let selected_amount = { value: '20', label: '20' }
 </script>
 
 <div
@@ -199,7 +201,7 @@
 					<Drawer.Trigger class="fixed bottom-6 right-6 z-50">
 						<Button
 							variant="secondary"
-							class="flex h-10 w-10 items-center justify-center rounded-full shadow-lg p-0"
+							class="flex h-10 w-10 items-center justify-center rounded-full p-0 shadow-lg"
 						>
 							<CaretUp></CaretUp>
 						</Button>
@@ -214,7 +216,7 @@
 							</Drawer.Description>
 						</Drawer.Header>
 						<div class="flex w-full flex-row justify-between gap-4 p-5">
-							<Select.Root onSelectedChange={handleTimeRangeChange}>
+							<Select.Root bind:selected={selected_time} onSelectedChange={handleTimeRangeChange}>
 								<Select.Trigger class="min-w-1/2 w-1/2">
 									<Select.Value placeholder="Tiempo" />
 								</Select.Trigger>
@@ -225,7 +227,7 @@
 								</Select.Content>
 							</Select.Root>
 
-							<Select.Root onSelectedChange={handleLimitChange}>
+							<Select.Root bind:selected={selected_amount} onSelectedChange={handleLimitChange}>
 								<Select.Trigger class="min-w-1/2 w-1/2">
 									<Select.Value placeholder="Cantidad" />
 								</Select.Trigger>
@@ -243,9 +245,9 @@
 					<Popover.Trigger class="fixed bottom-6 right-6 z-50">
 						<Button
 							variant="secondary"
-							class="flex h-10 w-10 items-center justify-center rounded-full shadow-lg p-0"
+							class="flex h-10 w-10 items-center justify-center rounded-full p-0 shadow-lg"
 						>
-						<CaretUp></CaretUp>
+							<CaretUp></CaretUp>
 						</Button>
 					</Popover.Trigger>
 
@@ -255,7 +257,7 @@
 						<div
 							class="flex w-full flex-row gap-4 rounded-xl border bg-white p-5 text-black shadow-lg ring-1 ring-black/5 lg:w-auto lg:min-w-[33vw]"
 						>
-							<Select.Root onSelectedChange={handleTimeRangeChange}>
+							<Select.Root bind:selected={selected_time} onSelectedChange={handleTimeRangeChange}>
 								<Select.Trigger class="min-w-1/2 w-1/2">
 									<Select.Value placeholder="Tiempo" />
 								</Select.Trigger>
@@ -266,7 +268,7 @@
 								</Select.Content>
 							</Select.Root>
 
-							<Select.Root onSelectedChange={handleLimitChange}>
+							<Select.Root bind:selected={selected_amount} onSelectedChange={handleLimitChange}>
 								<Select.Trigger class="min-w-1/2 w-1/2">
 									<Select.Value placeholder="Cantidad" />
 								</Select.Trigger>
