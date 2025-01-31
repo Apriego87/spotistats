@@ -128,6 +128,7 @@
 		return data
 	}
 
+
 	async function fetchData() {
 		if (browser) {
 			if (localStorage.getItem('access_token')) {

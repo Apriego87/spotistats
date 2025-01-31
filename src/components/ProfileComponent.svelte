@@ -3,6 +3,26 @@
 	import * as Card from '$lib/components/ui/card'
 
 	export let profileInfo, currentlyPlayingContent
+
+	async function pause() {
+		let accessToken = localStorage.getItem('access_token')
+		await fetch('https://api.spotify.com/v1/me/player/pause', {
+			method: 'PUT',
+			headers: {
+				Authorization: 'Bearer ' + accessToken
+			}
+		})
+	}
+
+	async function play() {
+		let accessToken = localStorage.getItem('access_token')
+		await fetch('https://api.spotify.com/v1/me/player/play', {
+			method: 'PUT',
+			headers: {
+				Authorization: 'Bearer ' + accessToken
+			}
+		})
+	}
 </script>
 
 <Card.Root
@@ -47,12 +67,20 @@
 							<Card.Content>
 								<div class="flex w-full flex-row items-center gap-4">
 									{#if currentlyPlayingContent.currently_playing_type === 'episode'}
-										<Avatar.Root
-											class="animation-duration-10 size-mx size-12 motion-safe:animate-spin-slow lg:size-20"
-										>
-											<Avatar.Image src={currentlyPlayingContent.item.images[0].url} alt="" />
-											<Avatar.Fallback></Avatar.Fallback>
-										</Avatar.Root>
+										<button on:click={currentlyPlayingContent.is_playing ? pause : play}>
+											<Avatar.Root
+												class="animation-duration-10 size-mx size-12 {currentlyPlayingContent.is_playing
+													? 'animate-spin-slow'
+													: 'grayscale'} lg:size-20"
+											>
+												<Avatar.Image
+													src={currentlyPlayingContent.item.images[0].url}
+													alt=""
+												/>
+
+												<Avatar.Fallback></Avatar.Fallback>
+											</Avatar.Root>
+										</button>
 										<div class="flex flex-col items-start">
 											<p class="text-lg font-bold lg:text-xl">
 												{currentlyPlayingContent.item.name}
@@ -62,18 +90,21 @@
 											</p>
 										</div>
 									{:else}
-										<Avatar.Root
-											class="animation-duration-10 size-mx size-12 {currentlyPlayingContent.is_playing
-												? 'animate-spin-slow'
-												: 'grayscale'} lg:size-20"
-										>
-											<Avatar.Image
-												src={currentlyPlayingContent.item.album.images[0].url}
-												alt=""
-											/>
-											
-											<Avatar.Fallback></Avatar.Fallback>
-										</Avatar.Root>
+										<button on:click={currentlyPlayingContent.is_playing ? pause : play}>
+											<Avatar.Root
+												class="animation-duration-10 size-mx size-12 {currentlyPlayingContent.is_playing
+													? 'animate-spin-slow'
+													: 'grayscale'} lg:size-20"
+											>
+												<Avatar.Image
+													src={currentlyPlayingContent.item.album.images[0].url}
+													alt=""
+												/>
+
+												<Avatar.Fallback></Avatar.Fallback>
+											</Avatar.Root>
+										</button>
+
 										<div class="flex flex-col items-start">
 											<p class="text-lg font-bold lg:text-xl">
 												{currentlyPlayingContent.item.name}

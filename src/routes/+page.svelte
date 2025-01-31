@@ -6,9 +6,9 @@
 
 	const clientId = data.clientID
 	const redirectUri = data.redirectURI
-	const state = 'some-random-state' // A random state string for CSRF protection
+	const state = 'some-random-state'
 	const scopes =
-		'user-read-private user-read-playback-state user-read-email user-top-read user-read-currently-playing user-read-recently-played'
+		'user-read-private user-read-playback-state user-read-email user-top-read user-read-currently-playing user-read-recently-played user-modify-playback-state'
 
 	const url = `https://accounts.spotify.com/authorize?response_type=code&client_id=${clientId}&scope=${encodeURIComponent(scopes)}&redirect_uri=${encodeURIComponent(redirectUri)}`
 
