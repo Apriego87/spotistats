@@ -14,8 +14,6 @@
 		})
 	}
 
-	console.log(currentlyPlayingContent)
-
 	async function play() {
 		let accessToken = localStorage.getItem('access_token')
 		await fetch('https://api.spotify.com/v1/me/player/play', {
