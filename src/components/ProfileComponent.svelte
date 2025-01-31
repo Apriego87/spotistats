@@ -14,6 +14,8 @@
 		})
 	}
 
+	console.log(currentlyPlayingContent)
+
 	async function play() {
 		let accessToken = localStorage.getItem('access_token')
 		await fetch('https://api.spotify.com/v1/me/player/play', {
@@ -73,18 +75,21 @@
 													? 'animate-spin-slow'
 													: 'grayscale'} lg:size-20"
 											>
-												<Avatar.Image
-													src={currentlyPlayingContent.item.images[0].url}
-													alt=""
-												/>
+												<Avatar.Image src={currentlyPlayingContent.item.images[0].url} alt="" />
 
 												<Avatar.Fallback></Avatar.Fallback>
 											</Avatar.Root>
 										</button>
 										<div class="flex flex-col items-start">
-											<p class="text-lg font-bold lg:text-xl">
+											<!-- <p class="text-lg font-bold lg:text-xl">
 												{currentlyPlayingContent.item.name}
-											</p>
+											</p> -->
+											<a
+												href={currentlyPlayingContent.item.external_urls.spotify}
+												class="text-lg font-bold lg:text-xl"
+											>
+												{currentlyPlayingContent.item.name}
+											</a>
 											<p class="text-sm">
 												{currentlyPlayingContent.item.show.name}
 											</p>
@@ -106,9 +111,12 @@
 										</button>
 
 										<div class="flex flex-col items-start">
-											<p class="text-lg font-bold lg:text-xl">
+											<a
+												href={currentlyPlayingContent.item.external_urls.spotify}
+												class="text-lg font-bold lg:text-xl"
+											>
 												{currentlyPlayingContent.item.name}
-											</p>
+											</a>
 											<div class="flex flex-row flex-wrap">
 												{#each currentlyPlayingContent.item.artists as artist, index}
 													<p class="lg:text-md text-sm">
