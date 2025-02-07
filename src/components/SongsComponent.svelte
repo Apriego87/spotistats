@@ -43,7 +43,7 @@
 </script>
 
 <Card.Root
-	class="max-w-screen isolate flex h-[50vh] w-full flex-col overflow-hidden rounded-xl border bg-white/20 text-white shadow-lg ring-1 ring-black/5 "
+	class="max-w-screen isolate flex h-[67vh] w-full flex-col overflow-hidden rounded-xl border bg-white/20 text-white shadow-lg ring-1 ring-black/5 "
 >
 	<Card.Header class="flex-shrink-0">
 		<Card.Title>
