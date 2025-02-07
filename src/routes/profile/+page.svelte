@@ -216,17 +216,6 @@
 							</Drawer.Description>
 						</Drawer.Header>
 						<div class="flex w-full flex-row justify-between gap-4 p-5">
-							<Select.Root bind:selected={selected_time} onSelectedChange={handleTimeRangeChange}>
-								<Select.Trigger class="min-w-1/2 w-1/2">
-									<Select.Value placeholder="Tiempo" />
-								</Select.Trigger>
-								<Select.Content>
-									<Select.Item value="short_term">4 semanas</Select.Item>
-									<Select.Item value="medium_term">6 meses</Select.Item>
-									<Select.Item value="long_term">siempre</Select.Item>
-								</Select.Content>
-							</Select.Root>
-
 							<Select.Root bind:selected={selected_amount} onSelectedChange={handleLimitChange}>
 								<Select.Trigger class="min-w-1/2 w-1/2">
 									<Select.Value placeholder="Cantidad" />
@@ -235,6 +224,17 @@
 									<Select.Item value="10">10</Select.Item>
 									<Select.Item value="20">20</Select.Item>
 									<Select.Item value="50">50</Select.Item>
+								</Select.Content>
+							</Select.Root>
+
+							<Select.Root bind:selected={selected_time} onSelectedChange={handleTimeRangeChange}>
+								<Select.Trigger class="min-w-1/2 w-1/2">
+									<Select.Value placeholder="Tiempo" />
+								</Select.Trigger>
+								<Select.Content>
+									<Select.Item value="short_term">4 semanas</Select.Item>
+									<Select.Item value="medium_term">6 meses</Select.Item>
+									<Select.Item value="long_term">siempre</Select.Item>
 								</Select.Content>
 							</Select.Root>
 						</div>
@@ -255,29 +255,32 @@
 						class="flex w-auto flex-row rounded-xl border-transparent bg-white/20 p-0 text-white"
 					>
 						<div
-							class="flex w-full flex-row gap-4 rounded-xl border bg-white p-5 text-black shadow-lg ring-1 ring-black/5 lg:w-auto lg:min-w-[33vw]"
+							class="flex w-full flex-col gap-4 rounded-xl border bg-white p-5 text-center text-black shadow-lg ring-1 ring-black/5 lg:w-auto lg:min-w-[33vw]"
 						>
-							<Select.Root bind:selected={selected_time} onSelectedChange={handleTimeRangeChange}>
-								<Select.Trigger class="min-w-1/2 w-1/2">
-									<Select.Value placeholder="Tiempo" />
-								</Select.Trigger>
-								<Select.Content>
-									<Select.Item value="short_term">4 semanas</Select.Item>
-									<Select.Item value="medium_term">6 meses</Select.Item>
-									<Select.Item value="long_term">siempre</Select.Item>
-								</Select.Content>
-							</Select.Root>
-
-							<Select.Root bind:selected={selected_amount} onSelectedChange={handleLimitChange}>
-								<Select.Trigger class="min-w-1/2 w-1/2">
-									<Select.Value placeholder="Cantidad" />
-								</Select.Trigger>
-								<Select.Content>
-									<Select.Item value="10">10</Select.Item>
-									<Select.Item value="20">20</Select.Item>
-									<Select.Item value="50">50</Select.Item>
-								</Select.Content>
-							</Select.Root>
+							<h1><b>Filtros</b></h1>
+							<p>Aquí puedes elegir cuántos elementos mostrar, y desde cuándo filtrar los datos.</p>
+							<div class="flew-row flex w-full gap-4">
+								<Select.Root bind:selected={selected_amount} onSelectedChange={handleLimitChange}>
+									<Select.Trigger class="min-w-1/2 w-1/2">
+										<Select.Value placeholder="Cantidad" />
+									</Select.Trigger>
+									<Select.Content>
+										<Select.Item value="10">10</Select.Item>
+										<Select.Item value="20">20</Select.Item>
+										<Select.Item value="50">50</Select.Item>
+									</Select.Content>
+								</Select.Root>
+								<Select.Root bind:selected={selected_time} onSelectedChange={handleTimeRangeChange}>
+									<Select.Trigger class="min-w-1/2 w-1/2">
+										<Select.Value placeholder="Tiempo" />
+									</Select.Trigger>
+									<Select.Content>
+										<Select.Item value="short_term">4 semanas</Select.Item>
+										<Select.Item value="medium_term">6 meses</Select.Item>
+										<Select.Item value="long_term">siempre</Select.Item>
+									</Select.Content>
+								</Select.Root>
+							</div>
 						</div>
 					</Popover.Content>
 				</Popover.Root>
