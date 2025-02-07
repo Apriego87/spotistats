@@ -125,8 +125,16 @@
 									{/each}
 								</div>
 								<p class="text-xs">
-									{`${new Date(song.played_at).getUTCDate()}/${new Date(song.played_at).getUTCMonth() + 1}, ${new Date(song.played_at).getUTCHours()}:${new Date(song.played_at).getUTCMinutes()}`}
-								</p>
+									{(() => {
+									  const date = new Date(song.played_at);
+									  const day = String(date.getDate()).padStart(2, '0');
+									  const month = String(date.getMonth() + 1).padStart(2, '0');
+									  const year = date.getFullYear();
+									  const hours = String(date.getHours()).padStart(2, '0');  // Local hours
+									  const minutes = String(date.getMinutes()).padStart(2, '0');
+									  return `${day}/${month}/${year} ${hours}:${minutes}`;
+									})()}
+								  </p>
 							</div>
 						</a>
 					</div>
