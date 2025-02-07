@@ -1,6 +1,7 @@
 <script lang="ts">
 	import * as Avatar from '$lib/components/ui/avatar'
 	import * as Card from '$lib/components/ui/card'
+	import Badge from '$lib/components/ui/badge/badge.svelte';
 
 	export let profileInfo, currentlyPlayingContent
 
@@ -50,14 +51,15 @@
 						{/if}
 					</div>
 					<div
-						class="flex w-2/3 flex-col justify-center text-center md:text-left lg:w-2/4 lg:text-left"
+						class="flex w-2/3 flex-col justify-center text-center items-center md:items-start gap-2 md:text-left lg:w-2/4 lg:text-left"
 					>
 						<p class="text-3xl">{profileInfo.display_name}</p>
 						<p class="text-sm">{profileInfo.followers.total} seguidores</p>
+						<Badge variant="outline" class="text-white w-fit bg-white/20">{profileInfo.product}</Badge>
 					</div>
 				</div>
 				{#if currentlyPlayingContent}
-					<div class="w-full lg:w-auto lg:min-w-[30vw]">
+					<div class="w-full lg:w-auto lg:min-w-[30vw] mt-2 md:mt-0">
 						<Card.Root class="w-full border bg-transparent text-white">
 							<Card.Header>
 								<Card.Title>
