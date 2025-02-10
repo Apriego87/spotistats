@@ -208,7 +208,7 @@
 					</Drawer.Trigger>
 					<Drawer.Content>
 						<Drawer.Header>
-							<Drawer.Title>Filtros</Drawer.Title>
+							<Drawer.Title>Filtros de contenido</Drawer.Title>
 							<Drawer.Description>
 								<p>
 									Aquí puedes elegir cuántos elementos mostrar, y desde cuándo filtrar los datos.
@@ -257,7 +257,7 @@
 						<div
 							class="flex w-full flex-col gap-4 rounded-xl border bg-white p-5 text-center text-black shadow-lg ring-1 ring-black/5 lg:w-auto lg:min-w-[33vw]"
 						>
-							<h1><b>Filtros</b></h1>
+							<h1><b>Filtros de contenido</b></h1>
 							<p>Aquí puedes elegir cuántos elementos mostrar, y desde cuándo filtrar los datos.</p>
 							<div class="flew-row flex w-full gap-4">
 								<Select.Root bind:selected={selected_amount} onSelectedChange={handleLimitChange}>
