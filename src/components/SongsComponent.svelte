@@ -88,7 +88,7 @@
 									<p class="font-bold">{song.original_index}</p>
 									<img
 										class="size-12 rounded-full object-cover"
-										src={song.album.images[0].url}
+										src={song.album.images[0]?.url}
 										alt={song.name}
 									/>
 									<div>
@@ -128,7 +128,7 @@
 								<p>{song.original_index}</p>
 								<img
 									class="size-12 rounded-full object-cover"
-									src={song.track.album.images[0].url}
+									src={song.track.album.images[0]?.url}
 									alt={song.name}
 								/>
 								<div>
