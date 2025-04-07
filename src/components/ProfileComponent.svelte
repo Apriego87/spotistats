@@ -37,7 +37,7 @@
 			<div class="mt-2 flex w-full flex-col items-center gap-4 md:flex-row lg:flex-row">
 				<div class="flex w-full flex-row">
 					<div class="flex w-1/3 flex-col items-center justify-center">
-						<!-- {#if profileInfo.images[0].url}
+						{#if profileInfo.images[0]}
 							<Avatar.Root
 								class="size-24 overflow-hidden rounded-full border-2 md:size-24 lg:size-36"
 							>
@@ -48,7 +48,7 @@
 								/>
 								<Avatar.Fallback>U</Avatar.Fallback>
 							</Avatar.Root>
-						{/if} -->
+						{/if}
 					</div>
 					<div
 						class="flex w-2/3 flex-col justify-center text-center items-center md:items-start gap-2 md:text-left lg:w-2/4 lg:text-left"
